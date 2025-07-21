@@ -1,0 +1,8 @@
+setup.py
+./bindings.cpp
+symphonyqg.egg-info/PKG-INFO
+symphonyqg.egg-info/SOURCES.txt
+symphonyqg.egg-info/dependency_links.txt
+symphonyqg.egg-info/not-zip-safe
+symphonyqg.egg-info/requires.txt
+symphonyqg.egg-info/top_level.txt

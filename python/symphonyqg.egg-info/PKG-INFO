@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: symphonyqg
+Version: 0.1.0
+Summary: SymphonyQG
+Author: Yutong Gou
+Requires-Dist: numpy==1.26.4
+Requires-Dist: pybind11>=2.13.1
+
+SymphonyQG: towards Symphonious Integration of Quantization and Graph for Approximate Nearest Neighbor Search
