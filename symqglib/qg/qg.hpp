@@ -55,7 +55,6 @@ class QuantizedGraph {
         data_;  // vectors + graph + quantization codes
     QGScanner scanner_;
     FHTRotator rotator_;
-    // HashBasedBooleanSet visited_;
     // BloomFilter visited_;
     Hash visited_;
     buffer::SearchBuffer search_pool_;
@@ -354,7 +353,6 @@ inline void QuantizedGraph::search_qg_parallel(
     result_pools_[0].copy_results(results);
 }
 
-/* fill buckets of all collectors */
 inline void QuantizedGraph::buckets_prepare(
     const QGQuery& q_obj
 ) {
@@ -393,7 +391,6 @@ inline void QuantizedGraph::scanner_task(
     const size_t scanner_id
 ) {
     float filter_threshold = FLT_MAX;
-    float last_threshold = FLT_MAX;
     size_t block_size = pool_.get_block_size();
     std::vector<float> appro_dist(degree_bound_);
     while (bucket_buffer_.has_next(scanner_id)) {
@@ -445,7 +442,6 @@ inline void QuantizedGraph::scanner_task(
             *it = Candidate<float>(cur_neighbor, appro_dist[i]);
         }
         if (put_buffer[(size_t)(filter_alpha_ * insert_limit_) - 1].distance < filter_threshold) {
-            last_threshold = filter_threshold;
             filter_threshold = put_buffer[size_t(filter_alpha_ * insert_limit_) - 1].distance;
         }
         // reset put_buffer[insert_limit_:w]
